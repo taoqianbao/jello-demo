@@ -17,6 +17,7 @@
         #require("bootstrap/css/bootstrap.css")
         #require("bootstrap/css/bootstrap-theme.css")
         #require("/static/scss/global.scss")
+        #require("/static/scss/main.css")
     #end## end head
 
     #body()
@@ -28,6 +29,7 @@
     #end## end of body
 
     #script()
+    require(["jquery"]);
     // 启用 bootstrap
     require(['bootstrap']);
     #end

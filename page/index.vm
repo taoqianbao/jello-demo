@@ -1,53 +1,151 @@
 #extends("/page/layout/front.vm")
 
-
 #block("content")
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <div class="container">
-        <h1>Jello <small>['dʒeləu]</small></h1>
-        <p>针对服务端为 JAVA + Velocity/jsp 的前端集成解决方案。</p>
-        <p>为优化前端开发效率而生，提供前后端开发分离、自动性能优化、模块化开发机制等功能。</p>
-        <p><a href="http://oak.baidu.com/docs/jello" class="btn btn-primary btn-lg" role="button">查看更多 &raquo;</a></p>
-    </div>
-</div>
+<div class="viewFramework-topbar">
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <h2>前后端分离</h2>
-            <p>基于 <a href="http://velocity.apache.org/">velocity</a>/jsp 模板，实现数据与页面分离</p>
-            <p>开发分离，制定数据格式便能脱离后端独立开发。基于 jello 轻松模拟各类数据。</p>
+        <div class="aliyun-console-topbar">
+
+            <div class="topbar-wrap topbar-clearfix">
+
+                <div class="topbar-head topbar-left">
+                    <a class="topbar-logo topbar-left">
+                        <span class="glyphicon glyphicon-th-large"></span>
+                    </a>
+                    <a class="topbar-home-link topbar-btn topbar-left">
+                        UNS技术中心
+                    </a>
+                </div>
+
+                <div class="topbar-info topbar-right">
+
+
+                    <div class="topbar-left">
+                        <span class="topbar-info-gap"></span>
+                        <div class="dropdown topbar-info-item">
+                            <a href="#" class="dropdown-toggle topbar-btn" data-toggle="dropdown">
+                                <span></span><span class="icon-arrow-down"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="col-md-4">
-            <h2>自动性能优化</h2>
-            <p>基于配置，自动完成资源压缩，合并，优化工作。</p>
-            <p>收集 css 和 js，统一于页头和页底输出，优化性能。</p>
+
+    </div>
+
+    <div class="viewFramework-body viewFramework-sidebar-full">
+
+        <div class="viewFramework-sidebar">
+            <div class="sidebar-content">
+
+                <div class="sidebar-inner">
+
+                    <!--
+                    <div class="sidebar-fold">
+                        <span class="glyphicon glyphicon-fullscreen"></span>
+                    </div>
+                    -->
+
+                    <div class="sidebar-nav main-nav">
+
+                        <div style="color:white; text-align:center; height:30px; line-height:30px;">
+                            统一认证中心
+                        </div>
+
+                        <div class="sidebar-title">
+                            <div class="sidebar-title-inner">
+                                <span class="glyphicon glyphicon-triangle-bottom sidebar-title-icon"></span>
+                                <!--<span class="glyphicon glyphicon-triangle-top"></span>-->
+                                <span class="sidebar-title-text">系统应用</span>
+                            </div>
+                        </div>
+
+                        <ul class="sidebar-trans">
+                            <li class="nav-item">
+                                <a href="home.html" target="iframeMain">
+                                    <div class="nav-icon">
+                                        <span class="glyphicon glyphicon-dashboard sidebar-title-icon"></span>
+                                    </div>
+                                    <span class="nav-title">DashBoard</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="col-md-4">
-            <h2>模块化开发</h2>
-            <p>提供 html、css、js 模块化机制，包括 widget 组件化与 js amd 加载机制，让内容更好的拆分与复用。</p>
-            <p>可以随意拆分，无需考虑性能问题。</p>
+
+        <div class="viewFramework-product">
+
+            <div class="viewFramework-product-body">
+
+                <div class="home-container">
+
+                    <iframe name="iframeMain" id="iframeMain" src="page/html/home.html" style="width:100%; height:100%; min-height:300px; margin:0px; padding:0px; border:none;"></iframe>
+
+                </div>
+
+                <div class="clearfix"></div>
+
+            </div>
+
+            <div class="clearfix">
+            </div>
+
+            <div style="height:10px; width:100%;"></div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>模板继承 &amp; widget 机制</h2>
-            <p>提供更好的骨架 (<a href="$!{request.contextPath}/doc/layout">layout</a>) 机制。</p>
-            <p>公用部分抽离成 widget 便于多页面间复用。</p>
-        </div>
-        <div class="col-md-4">
-            <h2>简化环境安装</h2>
-            <p>内嵌 j2ee 开发服务器，你无需再折腾 j2ee 环境搭建。直接通过 jello server start 就能开起服务，预览页面。</p>
-        </div>
-        <div class="col-md-4">
-            <h2>轻松接入 spring</h2>
-            <p>提供标准 <a href="https://github.com/fex-team/jello-spring-example">maven 示例程序</a>，拷贝几条配置便能工作。</p>
-        </div>
-    </div>
-</div>
+
+#script()
+$(document).ready(function () {
+
+    function adjuestIframeSize() {
+        var h = $(window).height() - 60;
+        $("#iframeMain").height(h);
+    }
+
+    adjuestIframeSize();
+
+    $(window).resize(function () {
+        adjuestIframeSize();
+    });
+
+
+    if (window.localStorage) {
+
+        var isOpen = window.localStorage.getItem("hc-sidebar-open");
+
+        if (isOpen != null && isOpen == "true") {
+            $("div.viewFramework-body").addClass("viewFramework-sidebar-full");
+        } else {
+            $("div.viewFramework-body").removeClass("viewFramework-sidebar-full");
+        }
+    }
+
+    $("a.topbar-logo").bind("click", function () {
+
+        if ($("div.viewFramework-body").hasClass("viewFramework-sidebar-full")) {
+            $("div.viewFramework-body").removeClass("viewFramework-sidebar-full");
+            //$("div.viewFramework-sidebar").hide(1500);
+            window.localStorage.setItem("hc-sidebar-open", "false");
+        } else {
+            window.localStorage.setItem("hc-sidebar-open", "true");
+            $("div.viewFramework-body").addClass("viewFramework-sidebar-full");
+            //$("div.viewFramework-sidebar").show();
+        }
+    });
+
+});
+#end
 
 #end## end of body
 #end
