@@ -29,7 +29,7 @@
     #end## end of body
 
     #script()
-    require(["jquery"]);
+    
     // 启用 bootstrap
     require(['bootstrap']);
     #end
